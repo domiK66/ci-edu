@@ -50,21 +50,20 @@ podTemplate(containers: [
             }
             stage('pytest')
                 container('python') {
-                        dir("student"){
-                            sh script:'''
-                                #!/bin/bash
-                                . newenv/bin/activate
+                    dir("student"){
+                        sh script:'''
+                            #!/bin/bash
+                            . newenv/bin/activate
                                     
-                                pip install -U pytest-django
-                                cd movie_site
-                                export PYTHONPATH="$PYTHONPATH:."
-                                python -c "import sys; print(sys.path)"
+                            pip install -U pytest-django
+                            cd movie_site
+                            export PYTHONPATH="$PYTHONPATH:."
+                            python -c "import sys; print(sys.path)"
                                     
-                                pytest --junitxml=report.xml
+                            pytest --junitxml=report.xml
                                     
-                                deactivate
-                            '''
-                        }
+                            deactivate
+                        '''
                     }
                 }
             }
