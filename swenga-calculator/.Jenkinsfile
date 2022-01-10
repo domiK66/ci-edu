@@ -47,7 +47,8 @@ podTemplate(containers: [
             stage('commit results') {
                 sh script:'''
                     #!/bin/bash
-    
+                    
+                    cd teacher
                     git config --global user.email "dominik.kainz@edu.fh-joanneaum.at"
                     git config --global user.name "Dominik Kainz"
                     git add .
