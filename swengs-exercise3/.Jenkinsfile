@@ -45,7 +45,7 @@ podTemplate(
                         '''
                     }
                 }
-            }
+            } 
             stage('cp testfiles'){
                 sh 'cp teacher/swengs-exercise3/test_exercise3.py student/movie_site/'
             }

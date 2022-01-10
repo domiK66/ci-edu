@@ -47,7 +47,7 @@ podTemplate(containers: [
 
                     cd teacher
                     git config --global user.email "dominik.kainz@edu.fh-joanneaum.at"
-                    git config --global user.name "Dominik Kainz"
+                    git config --global user.name "Jenkins"
                     git add .
                     git commit -m "grading"
                     git push origin main
