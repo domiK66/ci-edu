@@ -48,7 +48,7 @@ podTemplate(containers: [
             stage('cp testfiles'){
                 sh 'cp teacher/swengs-exercise3/test_exercise3.py student/movie_site/'
             }
-            stage('pytest')
+            stage('pytest') {
                 container('python') {
                     dir("student"){
                         sh script:'''
@@ -86,5 +86,5 @@ podTemplate(containers: [
                 '''
             }
         }
-    }
+    }  
 }
