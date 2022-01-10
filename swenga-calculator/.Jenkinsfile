@@ -45,17 +45,15 @@ podTemplate(containers: [
                 }
             }
             stage('commit results') {
-                dir('student') {
-                    sh script:'''
-                        #!/bin/bash
+                sh script:'''
+                    #!/bin/bash
     
-                        git config --global user.email "dominik.kainz@edu.fh-joanneaum.at"
-                        git config --global user.name "Dominik Kainz"
-                        git add .
-                        git commit -m "grading"
-                        git push origin main
-                    '''
-                }
+                    git config --global user.email "dominik.kainz@edu.fh-joanneaum.at"
+                    git config --global user.name "Dominik Kainz"
+                    git add .
+                    git commit -m "grading"
+                    git push origin main
+                '''
             }
         }
     }
