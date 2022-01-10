@@ -23,7 +23,7 @@ podTemplate(containers: [
                     git url: 'https://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@github.com/domiK66/ci-edu', branch: 'main'
                 }
             }
-            stage('teacher github') {
+            stage('cp testfiles') {
                 sh "cp teacher/${exerciseName}/CalculatorTest.kt student/src/test/kotlin/at/fhj/ima/swenga_calculator/entity"
             }
             stage('gradle test') {
