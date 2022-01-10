@@ -21,7 +21,7 @@ podTemplate(containers: [
                     git url: 'https://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@github.com/domiK66/ci-edu', branch: 'main'
                 }
             }
-            stage("django")
+            stage('django') {
                 container('python') {
                     dir("student"){
                         sh script:'''
@@ -67,7 +67,7 @@ podTemplate(containers: [
                     }
                 }
             }
-            
+
             stage('grading.py') {
                 container('python') {
                     sh "python teacher/grading.py report -d student >> teacher/${exerciseName}/result.txt"
