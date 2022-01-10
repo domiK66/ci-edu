@@ -19,8 +19,8 @@ podTemplate(containers: [
                 sh 'mkdir -p teacher'
                 dir("teacher"){
                     git url: 'https://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@github.com/domiK66/ci-edu', branch: 'main'
-                    }
                 }
+            }
             stage("django")
                 container('python') {
                     dir("student"){
