@@ -70,7 +70,7 @@ podTemplate(containers: [
 
             stage('grading.py') {
                 container('python') {
-                    sh "python teacher/grading.py report -d student >> teacher/${exerciseName}/result.txt"
+                    sh "python teacher/grading.py report -d student/movie_site >> teacher/${exerciseName}/result.txt"
                 }
             }
             stage('commit results') {
