@@ -1,4 +1,4 @@
-exerciseName = swenga-calculator
+exerciseName = "swenga-calculator"
 
 studentList = [
     ['Dominik Kainz','https://github.com/domiK66/swenga-calculator'],
@@ -41,7 +41,11 @@ podTemplate(containers: [
             }
             stage('grading.py') {
                 container('python') {
-                    sh 'python teacher/grading.py TEST-at.fhj.ima.swenga_calculator.entity.CalculatorTest -d student/build/test-results/test >> teacher/swenga-calculator/result.txt'
+                    sh "python teacher/grading.py
+                    TEST-at.fhj.ima.swenga_calculator.entity.CalculatorTest 
+                    -d student/build/test-results/test
+
+                    >> teacher/${exerciseName}/result.txt"
                 }
             }
             stage('commit results') {
