@@ -1,8 +1,8 @@
 exerciseName = "swenga-guestbook"
 
 studentList = [
-    ['Dominik Kainz','https://github.com/domiK66/swenga-calculator'],
-    ['Nico Raffling','https://github.com/domiK66/swenga-calculator']
+    ['Dominik Kainz','https://github.com/domiK66/swenga-guestbook'],
+    ['Nico Raffling','https://github.com/domiK66/swenga-guestbook']
 ]
 
 podTemplate(containers: [
@@ -24,10 +24,6 @@ podTemplate(containers: [
                 }
             }
             stage('cp testfiles') {
-                sh script: ''' 
-                cd student/src/test/kotlin/at/fhj/ima/swenga_guestbook/classes
-                ls -la
-                '''
                 sh "cp teacher/${exerciseName}/GuestBookManagerTest.kt student/src/test/kotlin/at/fhj/ima/swenga_guestbook/classes"
             }
             stage('gradle test') {
