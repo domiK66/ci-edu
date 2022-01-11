@@ -24,6 +24,10 @@ podTemplate(containers: [
                 }
             }
             stage('cp testfiles') {
+                sh script: ''' 
+                cd student/src/test/kotlin/at/fhj/ima/swenga_guestbook/classes
+                ls -la
+                '''
                 sh "cp teacher/${exerciseName}/GuestBookManagerTest.kt student/src/test/kotlin/at/fhj/ima/swenga_guestbook/classes"
             }
             stage('gradle test') {
