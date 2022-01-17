@@ -28,8 +28,9 @@ def sum_points():
         sum = 0
 
         for lines in exerciseCSV:
-            if lines[1] != 'points' or lines[2] != 0:
-                sum = sum + int(lines[1])
+            if lines[1] != 'points':
+                if lines[2] != '1':
+                    sum = sum + int(lines[1])
 
         return sum
 
