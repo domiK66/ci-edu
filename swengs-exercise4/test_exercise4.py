@@ -69,7 +69,7 @@ class TestYamodModel:
 
 
 @pytest.mark.django_db
-class ExtendedQueryTests:
+class TestExtendedQueries:
     def test_and_query(self, setup):
         movies_with_b_after_1980 = exercise.and_query()
         assert movies_with_b_after_1980.count() == 2
