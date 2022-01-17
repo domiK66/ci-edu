@@ -36,7 +36,7 @@ class TestYamodModel:
 
     def test_delete_genre(self, setup):
         exercise.delete_genre()
-        assert models.Genre.objects.count() == 2
+        assert models.Genre.objects.count() == 4
 
     def test_filter_movie_by_year(self, setup):
         movies_2000 = exercise.filter_movie_by_year()  
