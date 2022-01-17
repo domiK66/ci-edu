@@ -47,6 +47,7 @@ podTemplate(containers: [
 
             stage('cp testfiles'){
                 sh "cp teacher/${exerciseName}/test_exercise4.py student/movie_site/"
+                sh 'rm student/apps/yamod-0.6/yamod/tests.py'
             }
             stage('pytest') {
                 container('python') {
