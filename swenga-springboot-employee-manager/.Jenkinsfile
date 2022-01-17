@@ -6,7 +6,7 @@ studentList = [
 ]
 
 podTemplate(containers: [
-    containerTemplate(name: 'gradle', image: 'gradle:6.8.3', command: 'sleep', args: '99d'),
+    containerTemplate(name: 'gradle', image: 'gradle:6.8-jdk15', command: 'sleep', args: '99d'),
     containerTemplate(name: 'python', image: 'python:latest', command: 'sleep', args: '99d')
 ]) {
     for(int i = 0; i < studentList.size(); i++) {
@@ -32,6 +32,7 @@ podTemplate(containers: [
                         sh 'chmod +x gradlew'
                         // sh 'gradle -v'
                         sh 'gradle test'
+                        sh 'cat build/test-results/test/TEST-at.fhj.ima.employee.employeemanager.EmployeeManagerApplicationTests.xml'
                     }
                 }
             }
@@ -43,7 +44,7 @@ podTemplate(containers: [
             stage('commit results') {
                 sh script:'''
                     #!/bin/bash
-
+                    
                     cd teacher
                     git config --global user.email "dominik.kainz@edu.fh-joanneaum.at"
                     git config --global user.name "Jenkins"
