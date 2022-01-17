@@ -55,7 +55,7 @@ class TestYamodModel:
         assert movies_containing_blade.count() == 2
 
     def test_genre_to_str(self, setup):        
-        for movie_title,released,genre,runtime in self.movies:
+        for movie_title,released,genre,runtime in movies:
             assert str(models.Movie.objects.get(movie_title = movie_title)) == movie_title 
                 
     def test_update_role_type(self, setup):
