@@ -5,29 +5,26 @@ import pytest
 from yamod import models
 from yamod import exercise
 
-genres = ["Action","Horror","Scifi"]
+genres = ["Action","Horror","Scifi","Drama","Comedy"]
 movies = [
-    ("Blade Runner", datetime.date(year = 1982, month = 6, day = 25), 100),
-    ("Blade Runner 2049", datetime.date(year = 2017,month = 10, day = 6), 150),
-    ("Nomadland", datetime.date(year = 2020,month = 9, day = 11), 110),
-    ("The French Dispatch", datetime.date(year = 2021, month = 7, day = 12), 100),
-    ("Rushmoore", datetime.date(year = 1998, month = 9,day = 17), 95)
+    ("Blade Runner", datetime.date(year=1982,month=6,day=25),"Scifi",100),
+    ("Blade Runner 2049", datetime.date(year=2017,month=10,day=6),"Scifi",150),
+    ("Nomadland", datetime.date(year=2020,month=9,day=11),"Drama",110),
+    ("The French Dispatch", datetime.date(year=2021,month=7,day=12),"Comedy",100),
+    ("Rushmoore", datetime.date(year=1998,month=9,day=17),"Comedy",95)
 ]
 
 @pytest.fixture
 @pytest.mark.django_db
 def setup():
     # Setup database
-    [models.Genre.objects.create(name = name) for name in ["Action", "Horror", "Scifi"]]
-    [models.RoleType.objects.create(name = name) for name in ["Actor", "Producer", "Director"]]
-    [models.Movie.objects.create(
-        movie_title = movie_title,
-        released = released,
-        original_title = movie_title,
-        runtime = runtime
-        ) for movie_title, released, runtime in movies]
-    
-     # Update exercise 4
+    [models.Genre.objects.create(name=name) for name in genres]
+    [models.RoleType.objects.create(name=name) for name in ["Actor","Producer","Director"]]
+    [models.Movie.objects.create(movie_title=movie_title,
+                                     released=released,
+                                     original_title=movie_title,
+                                     runtime=runtime) for movie_title,released, genre,runtime in movies]    
+    # Updates
     for movie_title,released, genre,runtime in movies:
         models.Movie.objects.get(movie_title=movie_title).genre.add(models.Genre.objects.get(name=genre))
 
