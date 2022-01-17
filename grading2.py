@@ -2,6 +2,7 @@ import argparse
 import csv
 import datetime
 import xml.etree.ElementTree as ET
+import os
 
 def get_points(test):
     with open(args.exercise+'.csv', mode='r') as exerciseFile:
@@ -73,9 +74,11 @@ else:
 if args.student != None:
     #write new csv
     with open(args.exercise+'_result.csv', 'a', newline='') as csvfile:
-        result_writer = csv.writer(csvfile, delimiter=',')
-        points_text = str(achieved_points) + '/' + str(sum_points())
-        result_writer.writerow([args.student, points_text, datetime.datetime.now()])
+        fieldnames = ['Students', 'Achieved Points', 'Max Points', 'Timestamp']
+        result_writer = csv.DictWriter(csvfile, delimiter=',', fieldnames=fieldnames)
+        if os.stat(args.exercise+'_result.csv').st_size == 0:
+            result_writer.writeheader()
+        result_writer.writerow({'Students':args.student, 'Achieved Points': achieved_points, 'Max Points': sum_points(), 'Timestamp':datetime.datetime.now()})
 else:
     i=0
     while i < len(testname):
