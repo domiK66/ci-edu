@@ -28,7 +28,7 @@ def setup():
         ) for movie_title, released, runtime in movies]
     
      # Update exercise 4
-    for movie_title,released, genre,runtime in self.movies:
+    for movie_title,released, genre,runtime in movies:
         models.Movie.objects.get(movie_title=movie_title).genre.add(models.Genre.objects.get(name=genre))
 
 @pytest.mark.django_db
