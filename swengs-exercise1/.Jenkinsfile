@@ -46,7 +46,7 @@ podTemplate(containers: [
             }
             stage('grading.py') {
                 container('python') {
-                    sh "python teacher/grading2.py student/report.xml -e teacher/${exerciseName}/${exerciseName} -s \"${studentList[i][0]}\" >> teacher/${exerciseName}/result.txt"
+                    sh "python teacher/grading2.py student/report.xml -e teacher/${exerciseName}/${exerciseName}_config -s \"${studentList[i][0]}\""
                 }
             }
             stage('commit results') {              
