@@ -2,7 +2,7 @@ exerciseName = "swengs-exercise4"
 
 studentList = [
     ['Dominik Kainz','https://github.com/domiK66/swengs-exercise4'],
-    ['Nico Raffling','https://github.com/domiK66/swengs-exercise4']
+    ['Nico Raffling','https://github.com/Wuschelkopf97/swengs-exercise4']
 ]
 podTemplate(containers: [ 
     containerTemplate(name: 'python', image: 'python:latest', command: 'sleep', args: '99d') 
