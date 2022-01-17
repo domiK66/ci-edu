@@ -35,9 +35,10 @@ podTemplate(containers: [
                             . newenv/bin/activate
                                 
                             pip install -U pytest
+                            pip install pytest-custom-exit-code
                             export PYTHONPATH="$PYTHONPATH:."
                             python -c "import sys;print(sys.path)"
-                            pytest --junitxml=report.xml --suppress-tests-failed-exit-code
+                            pytest -v --junitxml=report.xml --suppress-tests-failed-exit-code
                                 
                             deactivate
                         '''
