@@ -38,7 +38,7 @@ podTemplate(containers: [
             }
             stage('grading.py') {
                 container('python') {
-                    sh "python teacher/grading.py TEST-at.fhj.ima.swenga_calculator.entity.CalculatorTest -d student/build/test-results/test >> teacher/${exerciseName}/result.txt"
+                    sh "python teacher/grading2.py student/build/test-results/test/TEST-at.fhj.ima.swenga_calculator.entity.CalculatorTest.xml -e teacher/${exerciseName}/${exerciseName} -s \"${studentList[i][0]}\""
                 }
             }
             stage('commit results') {
