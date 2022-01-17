@@ -2,7 +2,7 @@ exerciseName = "swenga-calculator"
 
 studentList = [
     ['Dominik Kainz','https://github.com/domiK66/swenga-calculator'],
-    ['Nico Raffling','https://github.com/domiK66/swenga-calculator']
+    ['Peter Supper','https://github.com/Wuschelkopf97/swenga-calculator']
 ]
 
 podTemplate(containers: [
