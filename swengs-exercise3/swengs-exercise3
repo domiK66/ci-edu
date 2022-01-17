@@ -1,0 +1,9 @@
+test_create_genre;1;0
+test_delete_genre;1;0
+test_filter_movie_by_year;1;0      
+test_filter_movie_by_runtime;1;0
+test_filter_movie_starting_with_b;1;0
+test_filter_movie_containing_blade;1;0
+test_genre_to_str;1;0                 
+test_update_role_type;1;0
+test_get_or_create_role_type;1;0
