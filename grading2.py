@@ -10,6 +10,7 @@ def get_points(test):
 
         for lines in exerciseCSV:
             if lines[0] == test:
+                print(test)
                 return(int(lines[1]))
 
 def get_success(test):
@@ -30,6 +31,7 @@ def sum_points():
         for lines in exerciseCSV:
             if lines[1] != 'points':
                 if lines[2] != '1':
+                    print(lines[0])
                     sum = sum + int(lines[1])
 
         return sum
