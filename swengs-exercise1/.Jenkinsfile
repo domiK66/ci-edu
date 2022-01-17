@@ -37,7 +37,7 @@ podTemplate(containers: [
                             pip install -U pytest
                             export PYTHONPATH="$PYTHONPATH:."
                             python -c "import sys;print(sys.path)"
-                            pytest --junitxml=report.xml --maxfail=100
+                            pytest --junitxml=report.xml --suppress-tests-failed-exit-code
                                 
                             deactivate
                         '''
