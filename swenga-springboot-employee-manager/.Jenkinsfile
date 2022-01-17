@@ -7,7 +7,8 @@ studentList = [
 
 podTemplate(containers: [
     containerTemplate(name: 'gradle', image: 'gradle:6.8-jdk15', command: 'sleep', args: '99d'),
-    containerTemplate(name: 'python', image: 'python:latest', command: 'sleep', args: '99d')
+    containerTemplate(name: 'python', image: 'python:latest', command: 'sleep', args: '99d'),
+    containerTemplate(name: 'mysql', image: 'mysql:5.7', command: 'sleep', args: '99d', )
 ]) {
     for(int i = 0; i < studentList.size(); i++) {
         node(POD_LABEL) {
@@ -25,6 +26,18 @@ podTemplate(containers: [
             }
             stage('cp testfiles') {
                 sh "cp teacher/${exerciseName}/EmployeeManagerApplicationTests.kt student/src/test/kotlin/at/fhj/ima/employee/employeemanager/"
+            }
+            stage('mysql setup') {
+                container('mysql') {
+                    sh script: '''
+                        #!/bin/bash
+                        
+                        /etc/init.d/mysql start
+                        mysql -u root -e "CREATE USER 'swenga'@'127.0.0.1' IDENTIFIED BY 'swenga';"
+                        mysql -u root -e "CREATE DATABASE IF NOT EXISTS swenga;"
+                        mysql -u root -e "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, CREATE TEMPORARY TABLES, DROP, INDEX, ALTER, LOCK TABLES ON swenga.* TO 'swenga'@'127.0.0.1';"
+                    '''
+                }
             }
             stage('gradle test') {
                 container('gradle') {
