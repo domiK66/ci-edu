@@ -56,21 +56,22 @@ podTemplate(containers: [
                             . newenv/bin/activate
                                     
                             pip install -U pytest-django
+                            pip install pytest-custom-exit-code
+                  
                             cd movie_site
                             export PYTHONPATH="$PYTHONPATH:."
                             python -c "import sys; print(sys.path)"
                                     
-                            pytest --junitxml=report.xml
+                            pytest -v --junitxml=report.xml --suppress-tests-failed-exit-code
                                     
                             deactivate
                         '''
                     }
                 }
             }
-
             stage('grading.py') {
                 container('python') {
-                    sh "python teacher/grading.py report -d student/movie_site >> teacher/${exerciseName}/result.txt"
+                    sh "python teacher/grading2.py student/movie_site/report.xml -e teacher/${exerciseName}/${exerciseName} -s \"${studentList[i][0]}\""
                 }
             }
             stage('commit results') {
