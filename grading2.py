@@ -73,8 +73,9 @@ else:
 if args.student != None:
     #write new csv
     with open(args.exercise+'_result.csv', 'a', newline='') as csvfile:
-        result_writer = csv.writer(csvfile, delimiter=';')
-        result_writer.writerow([args.student, achieved_points, datetime.datetime.now()])
+        result_writer = csv.writer(csvfile, delimiter=',')
+        points_text = str(achieved_points) + '/' + str(sum_points())
+        result_writer.writerow([args.student, points_text, datetime.datetime.now()])
 else:
     i=0
     while i < len(testname):
